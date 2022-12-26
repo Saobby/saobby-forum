@@ -39,6 +39,7 @@ def check_captcha(token):
 
 
 @app.route("/api/login", methods=["post"])
+@basic.check_permission("forum.visit")
 def api_login():
     if request.json is None:
         return abort(400)
@@ -65,6 +66,7 @@ def api_login():
 
 
 @app.route("/api/register", methods=["post"])
+@basic.check_permission("forum.visit")
 def api_reg():
     if request.json is None:
         return abort(400)
